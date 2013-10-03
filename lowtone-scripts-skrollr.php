@@ -22,8 +22,21 @@ namespace lowtone\scripts\skrollr {
 	$GLOBALS["lowtone_scripts_skrollr"] = Package::init(array(
 			Package::INIT_PACKAGES => array("lowtone\\scripts"),
 			Package::INIT_SUCCESS => function() {
+				$dependencies = array(
+						"skrollr.ie" => array("skrollr"),
+						"skrollr.menu" => array("skrollr"),
+						"skrollr.stylesheets" => array("skrollr")
+					);
+
+				$versions = array(
+						"skrollr" => "0.6.11",
+						"skrollr.ie" => "1.0.0",
+						"skrollr.menu" => "0.1.5",
+						"skrollr.stylesheets" => "0.0.4"
+					);
+
 				return array(
-						"registered" => \lowtone\scripts\register(__DIR__ . "/assets/scripts")
+						"registered" => \lowtone\scripts\register(__DIR__ . "/assets/scripts", $dependencies, $versions)
 					);
 			}
 		));
